@@ -27,6 +27,10 @@ Route::get('/contact', function() {
     return view('contact');
 });
 
+Route::get('/about', function() {
+    return view('about');
+});
+
 Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
 // Route::get('/posts/{post}', [PostsController::class, 'show']);
 
