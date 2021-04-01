@@ -30,18 +30,22 @@ class ArticlesController extends Controller
         // persist the new artcle
 
         // validation?
-        request()->validate([
-            'title' => 'required',
-            'exerpt' => 'required',
-            'body' => 'required'
-        ]);
+        // $validatedAttributes = request()->validate([
+        //     'title' => 'required',
+        //     'exerpt' => 'required',
+        //     'body' => 'required'
+        // ]);
         // cleanup?
+        
+        $validatedAttributes = $this->validatedArticle();
+        Article::create($validatedAttributes);
 
-        $article = new Article();
-        $article->title = request('title');
-        $article->exerpt = request('exerpt');
-        $article->body = request('body');
-        $article->save();
+/*         Article::create([
+            'title' => request('title'),
+            'exerpt' => request('exerpt'),
+            'body' => request('body'),
+
+        ]); */
 
         return redirect('/articles');
     }
@@ -57,21 +61,27 @@ class ArticlesController extends Controller
     // Persist the edited resource
     public function update(Article $article) {
 
-        request()->validate([
+/*         $validatedAttributes = request()->validate([
             'title' => 'required',
             'exerpt' => 'required',
             'body' => 'required'
-        ]);
+        ]); */
 
-        $article->title = request('title');
-        $article->exerpt = request('exerpt');
-        $article->body = request('body');
-        $article->save();
+        $validatedAttributes = $this->validatedArticle();
+        
+        $article->update($validatedAttributes);
 
         return redirect('/articles/'.$article->id);
 
     }
 
+    public function validatedArticle() {
+        return request()->validate([
+            'title' => 'required',
+            'exerpt' => 'required',
+            'body' => 'required'
+        ]);
+    }
     // Delete the resource
     public function destroy() {
         
