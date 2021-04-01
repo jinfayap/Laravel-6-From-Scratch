@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
 // Alternative syntax - Route::get('/posts/{post}', [PostsController::class, 'show']);
 
+Route::get('/', function() {
+    return view('welcome');
+});
+
+Route::get('/contact', function() {
+    return view('contact');
+});
+
 Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
 // Route::get('/posts/{post}', [PostsController::class, 'show']);
 
