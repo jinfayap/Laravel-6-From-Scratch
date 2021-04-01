@@ -21,4 +21,8 @@ class Article extends Model
     public function path() {
         return route('articles.show', $this);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class); // something like select * from user where article_id = ''
+    }
 }

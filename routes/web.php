@@ -45,29 +45,3 @@ Route::get('/articles/{article}/edit', 'App\Http\Controllers\ArticlesController@
 Route::put('/articles/{article}', 'App\Http\Controllers\ArticlesController@update');
 
 
-
-Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
-// Route::get('/posts/{post}', [PostsController::class, 'show']);
-
-
-// GET /articles
-// GET /articles/:id
-
-// POST /articles
-// PUT /articles/:id
-// DELETE /articles/:id
-
-// GET, POST, PUT, DELETE
-
-
-// GET /videos
-// GET /videos/create
-// POST /videos
-// GET /videos/2
-// GET /videos/2/edit
-// PUT /videos/2/
-// DELETE /videos/2/
-
-// GET /videos/subscribe
-
-// POST /videos/subscriptions => VideoSubscriptionsController 
