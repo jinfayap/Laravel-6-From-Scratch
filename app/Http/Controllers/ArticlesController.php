@@ -47,7 +47,7 @@ class ArticlesController extends Controller
 
         ]); */
 
-        return redirect('/articles');
+        return redirect(route('articles.index'));
     }
 
     // Show a view to edit an existing resource
@@ -71,7 +71,8 @@ class ArticlesController extends Controller
         
         $article->update($validatedAttributes);
 
-        return redirect('/articles/'.$article->id);
+        // return redirect(route('articles.show', $article) );
+        return redirect($article->path());
 
     }
 
