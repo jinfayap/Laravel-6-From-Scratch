@@ -17,7 +17,23 @@
                 <label for="" class="label" for="title"></label>
 
                 <div class="control">
-                    <input type="text" class="input" name="title" id="title">
+                    <!-- <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" id="title">
+                    @if ($errors->has('title'))
+                    <p class="help is-danger">{{$errors->first('title')}}</p>
+                    @endif -->
+
+                    <input 
+                    type="text" 
+                    class="input @error('title') is-danger @enderror" 
+                    name="title" 
+                    id="title"
+                    value="{{ old('title') }}"
+                    >
+
+                    @error('title')
+                        <p class="help is-danger">{{$errors->first('title')}}</p>
+                    @enderror
+                    
                 </div>
             </div>
 
@@ -25,7 +41,14 @@
                 <label for="" class="label" for="exerpt"></label>
 
                 <div class="control">
-                    <textarea class="textarea" name="exerpt" id="exerpt" ></textarea>
+                    <textarea 
+                    class="textarea @error('exerpt') is-danger @enderror" 
+                    name="exerpt" 
+                    id="exerpt" 
+                    >{{ old('exerpt') }}</textarea>
+                    @error('exerpt')
+                        <p class="help is-danger">{{$errors->first('exerpt')}}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -34,7 +57,14 @@
                 <label for="" class="label" for="body"></label>
 
                 <div class="control">
-                    <textarea class="textarea" name="body" id="body" ></textarea>
+                    <textarea 
+                    class="textarea @error('body') is-danger @enderror" 
+                    name="body" 
+                    id="body" 
+                    >{{ old('body') }}</textarea>
+                    @error('body')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
