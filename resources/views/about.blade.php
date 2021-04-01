@@ -17,8 +17,11 @@
 			<ul class="style1">
 			@foreach($articles as $article)
 				<li class="first">
-					<h3>{{ $article->title }}</h3>
-					<p><a href="#">{{ $article->exerpt }} </a></p>
+					<h3>
+					<a href="/articles/{{$article->id}}">
+					{{ $article->title }}</h3>
+					</a>
+					<p>{{ $article->exerpt }} </p>
 				</li>
 			@endforeach
 			</ul>
