@@ -35,6 +35,8 @@ Route::get('/about', function() {
     ]);
 });
 
+
+Route::get('/articles', 'App\Http\Controllers\ArticlesController@index');
 Route::get('/articles/{article}', 'App\Http\Controllers\ArticlesController@show');
 
 Route::get('/posts/{post}', 'App\Http\Controllers\PostsController@show');
