@@ -45,3 +45,5 @@ class UserFactory extends Factory
         });
     }
 }
+// Previous version is factory(App\User::class)->create(); -- But does not work now
+// User::factory()->create();  -- use this to trigger a creation of fake data

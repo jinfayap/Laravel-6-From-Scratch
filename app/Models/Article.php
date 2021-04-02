@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Article extends Model
 {
@@ -22,7 +23,11 @@ class Article extends Model
         return route('articles.show', $this);
     }
 
-    public function user() {
+/*     public function user() {
         return $this->belongsTo(User::class); // something like select * from user where article_id = ''
+    } */
+
+    public function author() { // method does not work => null, unless provide 'user_id' as a foreign key below
+        return $this->belongsTo(User::class, 'user_id' ); // something like select * from user where article_id = ''
     }
 }
