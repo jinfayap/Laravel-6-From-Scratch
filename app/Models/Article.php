@@ -30,4 +30,15 @@ class Article extends Model
     public function author() { // method does not work => null, unless provide 'user_id' as a foreign key below
         return $this->belongsTo(User::class, 'user_id' ); // something like select * from user where article_id = ''
     }
+
+    // an article has many tags
+    // tag belongs to an article
+
+    // Learn Laravel
+    // php, laravel, work, education --> can belong to many articles
+    // An article can have many tags, and the tags can have many articles -- Many to Many relationship
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
 }
