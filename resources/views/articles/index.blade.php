@@ -6,7 +6,7 @@
 	<div id="page" class="container">
 
 
-			@foreach($articles as $article)
+			@forelse($articles as $article)
 
             <div class="content">
                 <div class="title">
@@ -15,7 +15,10 @@
                 <p><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
                 {!! $article->exerpt !!}
             </div>
-			@endforeach
+
+            @empty
+                <p>No relevant articles yet</p>
+			@endforelse
 
 
 	</div>
