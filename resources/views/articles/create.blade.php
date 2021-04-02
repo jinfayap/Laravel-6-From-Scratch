@@ -14,7 +14,7 @@
             @csrf
 
             <div class="field">
-                <label for="" class="label" for="title"></label>
+                <label for="" class="label" for="title">Title</label>
 
                 <div class="control">
                     <!-- <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" id="title">
@@ -38,7 +38,7 @@
             </div>
 
             <div class="field">
-                <label for="" class="label" for="exerpt"></label>
+                <label for="" class="label" for="exerpt">Exerpt</label>
 
                 <div class="control">
                     <textarea 
@@ -54,7 +54,7 @@
 
             
             <div class="field">
-                <label for="" class="label" for="body"></label>
+                <label for="" class="label" for="body">Body</label>
 
                 <div class="control">
                     <textarea 
@@ -67,6 +67,26 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="field">
+                <label for="" class="label" for="tags">Tags</label>
+
+                <div class="select is-multiple control">
+                    <select 
+                    name="tags[]"
+                    multiple 
+                    >
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"> {{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @error('tags')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
 
             <div class="field is-grouped">
                 <div class="control">

@@ -39,6 +39,6 @@ class Article extends Model
     // An article can have many tags, and the tags can have many articles -- Many to Many relationship
 
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }

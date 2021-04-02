@@ -29,30 +29,26 @@ class ArticlesController extends Controller
 
     // Shows a view to create a new resource
     public function create() {
-        return view('articles.create');
+
+        return view('articles.create', [
+            'tags' => Tag::all()
+        ]);
     }
 
     // Persist the new resource
     public function store() {
         // persist the new artcle
+ 
+        // $validatedAttributes = $this->validatedArticle();
+        // Article::create($validatedAttributes);
 
-        // validation?
-        // $validatedAttributes = request()->validate([
-        //     'title' => 'required',
-        //     'exerpt' => 'required',
-        //     'body' => 'required'
-        // ]);
-        // cleanup?
-        
-        $validatedAttributes = $this->validatedArticle();
-        Article::create($validatedAttributes);
+        // Just for this tweak before authentication
+        $this->validatedArticle();
+        $article = new Article(request(['title', 'exerpt', 'body']));
+        $article->user_id = 1; // hardcoding this at the moment. normally use auth()->id()
+        $article->save();
 
-/*         Article::create([
-            'title' => request('title'),
-            'exerpt' => request('exerpt'),
-            'body' => request('body'),
-
-        ]); */
+        $article->tags()->attach(request('tags'));
 
         return redirect(route('articles.index'));
     }
@@ -87,7 +83,8 @@ class ArticlesController extends Controller
         return request()->validate([
             'title' => 'required',
             'exerpt' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'tags' =>'exists:tags,id'
         ]);
     }
     // Delete the resource
